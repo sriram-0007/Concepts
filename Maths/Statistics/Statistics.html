@@ -1,45 +1,103 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Data Representation Notes</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background-color: #f0f4f8;
+      color: #333;
+    }
+
+    main {
+      max-width: 900px;
+      margin: auto;
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    pre {
+      white-space: pre-wrap;
+      word-wrap: break-word;
+      font-family: Consolas, monospace;
+      background: #f9f9f9;
+      padding: 20px;
+      border-left: 5px solid #007acc;
+      overflow-x: auto;
+      border-radius: 5px;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+      margin: 15px auto;
+    }
+  </style>
 </head>
 <body>
-    <main>
-        <pre>
-            Three types of data representation
-            1.Ungrouped T1   2,14,17
-            2.Grouped with singe class value  T2    2*10,5*15,7*20    this is ele*frequency like 2*10 means 2 appears 10 times
-            3.Grouped with range class value  T3    (11-20)*10,(21-30)*15,(31-40)*7 this is values between 11-20 appears 10 times;
+  <main>
+    <pre>
+Three types of data representation:
+1. Ungrouped T1 — 2, 14, 17
+2. Grouped with single class value (T2) — 2*10, 5*15, 7*20
+   (This is element * frequency; like 2*10 means 2 appears 10 times)
+3. Grouped with range class value (T3) — (11-20)*10, (21-30)*15, (31-40)*7
+   (This means values between 11-20 appear 10 times)
 
+Key Concepts:
 
+1. Average = (x1 + x2 + x3 + ... + xn) / n → central value
+2. Mode = element that occurred the most
+3. Median = can eliminate outlier
+   - If n is odd → (n+1)/2
+   - If n is even → (n/2 + n/2+1) / 2
+   Note: Data must be sorted before finding median
 
-            1.Average=x1+x2+x3+....+xn/n  is central value;
-            2.Mode= element that occured most no of times;
-            3.Median=can eliminate outlier if n is odd (n+1)/2 is the Median
-                    in case of n is even then (n/2 +n/2+1)/2  data shoud be sorted before finding median;
+4. Dispersion or Scatterness
 
-            4.Dispersion or Scatterness
+5. Finding average for T3:
+   Data: (0-9)*2, (10-19)*10, (20-29)*12, (30-39)*8
+   Step: Convert each range to mid value → (0+9)/2 = 4.5
+   So it becomes like T2 → 4.5*2, 14.5*10, etc.
+   Average = (x1*f1 + x2*f2 + ... + xn*fn) / (f1 + f2 + ... + fn)
 
+6. What is cumulative frequency?
+   → Just prefix sum of frequencies
 
-                
+7. Calculating median in T3:
+   - Find cumulative frequencies
+   - Find n/2 (if even) or (n+1)/2 (if odd)
+   - Identify the class interval where this lies
+   - Apply formula:
+     Median = L + [(n/2 - F) / f] * h
+     Where:
+       L = lower boundary of median class
+       F = cumulative freq before class
+       f = freq of median class
+       h = class width
+    </pre>
 
-            5.finding averae for T3
-                (0-9)*2,(10-19)*10,(20-29)*12,(30-39)*8
-                to calculate average of this we take average of range of class value 
-                eg:(0-9)=>(0+9)/2=4.5 now the data chages to T2 4.5*2
-                do the same for remainig value and calculate average x1*f1+x2*f2+...+xn*fn/(f1+f2+...+fn);
-            6.What is cumulative frequency? it is just prefix sum of frequency;
-            7.Calculating median in T3 data
-                to calculate median in T3 data find cumulative frequency and then do n/2 is n is even or n+1/2 if n is odd then find the class value range in which this
-                value lies  (currCalssCumulativefreq-prevCummulativefreq)/(freqency of curr class)* difference of class range+ low value of class range
-            <img src="medianinT3data.png" width=40vw alt=""><img src="medianformulafort3class.png" width=40vw alt="">
-            8.claculating mode for T3 class is class lowerlimit+(modeclass-prevfreq)/[(modeclass-prevfreq)*(modeclass-nextfreq)]*lengthofclass;
-            <img src="modeforT3class.png" alt="">
-            
-            
-        </pre>
-    </main>
+    <img src="medianinT3data.png" alt="Median in T3 Data">
+    <img src="medianformulafort3class.png" alt="Median Formula for T3">
+
+    <pre>
+8. Calculating mode for T3 class:
+   Mode = L + [(f1 - f0) / (2f1 - f0 - f2)] * h
+   Where:
+     L = lower limit of modal class
+     f1 = frequency of modal class
+     f0 = frequency before modal class
+     f2 = frequency after modal class
+     h = class width
+    </pre>
+
+    <img src="modeforT3class.png" alt="Mode Formula for T3">
+  </main>
 </body>
 </html>
