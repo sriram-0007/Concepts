@@ -5,21 +5,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Data Representation Notes</title>
   <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      margin: 0;
-      padding: 20px;
       background-color: #f0f4f8;
       color: #333;
     }
 
     main {
-      max-width: 900px;
-      margin: auto;
-      background: #fff;
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      padding: 10px 15px; /* tight top-bottom and minimal side padding */
     }
 
     pre {
@@ -27,16 +27,17 @@
       word-wrap: break-word;
       font-family: Consolas, monospace;
       background: #f9f9f9;
-      padding: 20px;
-      border-left: 5px solid #007acc;
+      padding: 10px;
+      border-left: 4px solid #007acc;
       overflow-x: auto;
-      border-radius: 5px;
+      border-radius: 4px;
+      margin: 5px 0;
     }
 
     img {
       display: block;
       max-width: 100%;
-      margin: 15px auto;
+      margin: 10px auto 5px auto;
     }
   </style>
 </head>
